@@ -10,9 +10,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HwaHae">
         <activity
+            android:name=".register.RegisterActivity"
+            android:exported="true"
+            android:theme="@style/LoginTheme"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
             android:name=".login.LoginActivity"
             android:exported="true"
-            android:theme="@style/LoginTheme"/>
+            android:theme="@style/LoginTheme" />
         <activity
             android:name=".splash.SplashActivity2"
             android:exported="true"

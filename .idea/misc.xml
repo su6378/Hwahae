@@ -3,12 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/josooyun/AndroidProject/HwaHae/app/src/main/res/drawable/box_stroke.xml" value="0.3734375" />
         <entry key="..\:/josooyun/AndroidProject/HwaHae/app/src/main/res/drawable/ic_launcher_background.xml" value="0.27447916666666666" />
+        <entry key="..\:/josooyun/AndroidProject/HwaHae/app/src/main/res/drawable/indicator_default.xml" value="0.3676923076923077" />
         <entry key="..\:/josooyun/AndroidProject/HwaHae/app/src/main/res/drawable/indicator_gray.xml" value="0.22135416666666666" />
+        <entry key="..\:/josooyun/AndroidProject/HwaHae/app/src/main/res/drawable/indicator_mint.xml" value="0.3676923076923077" />
         <entry key="..\:/josooyun/AndroidProject/HwaHae/app/src/main/res/drawable/indicator_select.xml" value="0.22135416666666666" />
+        <entry key="..\:/josooyun/AndroidProject/HwaHae/app/src/main/res/drawable/register_checkbox.xml" value="0.3734375" />
         <entry key="..\:/josooyun/AndroidProject/HwaHae/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/josooyun/AndroidProject/HwaHae/app/src/main/res/layout/login_image_item.xml" value="0.36614583333333334" />
         <entry key="..\:/josooyun/AndroidProject/HwaHae/app/src/main/res/layout/login_page.xml" value="0.25" />
+        <entry key="..\:/josooyun/AndroidProject/HwaHae/app/src/main/res/layout/register_checkbox.xml" value="0.3572916666666667" />
+        <entry key="..\:/josooyun/AndroidProject/HwaHae/app/src/main/res/layout/register_page.xml" value="0.2515625" />
         <entry key="..\:/josooyun/AndroidProject/HwaHae/app/src/main/res/layout/splash_page.xml" value="0.1" />
         <entry key="..\:/josooyun/AndroidProject/HwaHae/app/src/main/res/layout/splash_page2.xml" value="0.25833333333333336" />
       </map>

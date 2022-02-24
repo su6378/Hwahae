@@ -3,5 +3,6 @@
     android:shape="oval">
 
     <solid
-        android:color="@color/splash_background2"/>
+        android:color="@color/splash_background"/>
+
 </shape>

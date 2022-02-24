@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".register.RegisterActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/register_appBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/backBtn"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginVertical="10dp"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/ic_back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/infoBtn"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginVertical="10dp"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/ic_help"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/register_indicator"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/register_appBar">
+
+        <ImageView
+            android:id="@+id/indicator0_iv_main"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/indicator1_iv_main"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/indicator_mint" />
+
+        <ImageView
+            android:id="@+id/indicator1_iv_main"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginStart="5dp"
+            app:layout_constraintBottom_toBottomOf="@+id/indicator0_iv_main"
+            app:layout_constraintLeft_toRightOf="@id/indicator0_iv_main"
+            app:layout_constraintRight_toLeftOf="@id/indicator2_iv_main"
+            app:layout_constraintTop_toTopOf="@+id/indicator0_iv_main"
+            app:srcCompat="@drawable/indicator_default" />
+
+        <ImageView
+            android:id="@+id/indicator2_iv_main"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginStart="5dp"
+            app:layout_constraintBottom_toBottomOf="@+id/indicator1_iv_main"
+            app:layout_constraintLeft_toRightOf="@id/indicator1_iv_main"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/indicator1_iv_main"
+            app:srcCompat="@drawable/indicator_default" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/input_comment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="기본정보를 입력해주세요 :D"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/register_indicator" />
+
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/register_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginTop="20dp"
+        android:hint="이메일"
+        android:inputType="textEmailAddress"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/input_comment"
+        app:met_errorColor="@color/red"
+        app:met_floatingLabel="highlight"
+        app:met_floatingLabelAlwaysShown="true"
+        app:met_floatingLabelText="이메일"
+        app:met_floatingLabelTextColor="#EDFFFFFF"
+        app:met_primaryColor="@color/splash_background">
+
+    </com.rengwuxian.materialedittext.MaterialEditText>
+
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/register_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginTop="30dp"
+        android:hint="비밀번호"
+        android:inputType="textPassword"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/register_email"
+        app:met_floatingLabel="highlight"
+        app:met_floatingLabelAlwaysShown="true"
+        app:met_floatingLabelText="비밀번호"
+        app:met_floatingLabelTextColor="#EDFFFFFF"
+        app:met_primaryColor="@color/splash_background" />
+
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/register_nickname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginTop="30dp"
+        android:hint="닉네임"
+        android:inputType="text"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/register_password"
+        app:met_floatingLabel="highlight"
+        app:met_floatingLabelAlwaysShown="true"
+        app:met_floatingLabelText="닉네임"
+        app:met_floatingLabelTextColor="#EDFFFFFF"
+        app:met_primaryColor="@color/splash_background" />
+
+    <me.codego.view.RoundLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="7dp"
+        app:layout_constraintBottom_toBottomOf="@id/register_nickname"
+        app:layout_constraintRight_toRightOf="@id/register_nickname"
+        app:layout_constraintTop_toTopOf="@id/register_nickname"
+        app:round_radius="2dp"
+        app:round_stroke_color="@color/gainsboro"
+        app:round_stroke_width="1dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="랜덤생성"
+            android:textColor="@color/black" />
+    </me.codego.view.RoundLayout>
+
+    <me.codego.view.RoundLayout
+        android:id="@+id/all_agree"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:background="#F8F8F8"
+        app:layout_constraintLeft_toLeftOf="@id/register_nickname"
+        app:layout_constraintRight_toRightOf="@id/register_nickname"
+        app:layout_constraintTop_toBottomOf="@id/register_nickname"
+        app:round_radius="2dp"
+        app:round_stroke_width="1dp">
+
+        <CheckBox
+            android:id="@+id/all_agree_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/splash_background"
+            android:text="전체동의"
+            android:textStyle="bold" />
+    </me.codego.view.RoundLayout>
+
+    <me.codego.view.RoundLayout
+        android:id="@+id/service_use_agree"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:layout_constraintLeft_toLeftOf="@id/register_nickname"
+        app:layout_constraintRight_toRightOf="@id/register_nickname"
+        app:layout_constraintTop_toBottomOf="@id/all_agree"
+        app:round_radius="2dp"
+        app:round_stroke_width="1dp">
+
+        <CheckBox
+            android:id="@+id/service_use_agree_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:buttonTint="@color/splash_background"
+            android:text="(필수) 화해 이용약관 동의"
+            android:textColor="@android:color/darker_gray" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_next"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </me.codego.view.RoundLayout>
+
+    <me.codego.view.RoundLayout
+        android:id="@+id/personal_info_agree"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:layout_constraintLeft_toLeftOf="@id/register_nickname"
+        app:layout_constraintRight_toRightOf="@id/register_nickname"
+        app:layout_constraintTop_toBottomOf="@id/service_use_agree"
+        app:round_radius="2dp"
+        app:round_stroke_width="1dp">
+
+        <CheckBox
+            android:id="@+id/personal_info_agree_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:buttonTint="@color/splash_background"
+            android:text="(필수) 개인정보 수집 및 이용 동의"
+            android:textColor="@android:color/darker_gray" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_next"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </me.codego.view.RoundLayout>
+
+    <me.codego.view.RoundLayout
+        android:id="@+id/under_14_agree"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:layout_constraintLeft_toLeftOf="@id/register_nickname"
+        app:layout_constraintRight_toRightOf="@id/register_nickname"
+        app:layout_constraintTop_toBottomOf="@id/personal_info_agree"
+        app:round_radius="2dp"
+        app:round_stroke_width="1dp">
+
+        <CheckBox
+            android:id="@+id/under_14_agree_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:buttonTint="@color/splash_background"
+            android:text="(필수) 만 14세 이상 확인"
+            android:textColor="@android:color/darker_gray"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="만 14세 미만 회원의 가입은 불가능합니다."
+            android:textColor="@android:color/darker_gray"
+            android:layout_marginLeft="35dp"
+            app:layout_constraintLeft_toLeftOf="@id/under_14_agree_checkbox"
+            app:layout_constraintTop_toBottomOf="@id/under_14_agree_checkbox" />
+    </me.codego.view.RoundLayout>
+
+
+    <TextView
+        android:id="@+id/nextbtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="다음"
+        android:textColor="@color/white"
+        android:paddingVertical="14dp"
+        android:gravity="center"
+        android:background="#CCCCCC"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

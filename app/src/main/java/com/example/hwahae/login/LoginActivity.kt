@@ -1,12 +1,13 @@
 package com.example.hwahae.login
 
-import android.gesture.GestureOverlayView.ORIENTATION_HORIZONTAL
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
-import androidx.viewpager.widget.ViewPager
+import android.view.View
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
-import com.bumptech.glide.Glide
 import com.example.hwahae.R
+import com.example.hwahae.register.RegisterActivity
 import com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
 
 class LoginActivity : AppCompatActivity() {
@@ -23,6 +24,14 @@ class LoginActivity : AppCompatActivity() {
         //indicator 부분 연결
         val login_indicator = findViewById<WormDotsIndicator>(R.id.login_indicator)
         login_indicator.setViewPager2(login_vp)
+
+        //회원가입 버튼
+        val registerBtn = findViewById<TextView>(R.id.registerBtn)
+        registerBtn.setOnClickListener(View.OnClickListener {
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
+            overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left)
+        })
 
     }
 
