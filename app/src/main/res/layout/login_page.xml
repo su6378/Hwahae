@@ -136,8 +136,9 @@
         android:id="@+id/registerBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="25dp"
         android:text="이메일 가입하기"
+        android:textSize="13sp"
         app:layout_constraintLeft_toLeftOf="@id/email_loginBtn"
         app:layout_constraintRight_toRightOf="@id/email_loginBtn"
         app:layout_constraintTop_toBottomOf="@id/email_loginBtn" />
