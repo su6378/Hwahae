@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".register.RegisterActivity2">
+    tools:context=".register.RegisterActivity2"
+    android:scrollbars="none">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/register_appBar"
@@ -198,6 +199,7 @@
         android:layout_marginHorizontal="30dp"
         android:layout_height="wrap_content">
         <TextView
+            android:id="@+id/route_text"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -245,6 +247,7 @@
         android:layout_marginHorizontal="30dp"
         android:layout_height="wrap_content">
         <TextView
+            android:id="@+id/age_text"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"

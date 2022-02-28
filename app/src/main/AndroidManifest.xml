@@ -10,10 +10,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HwaHae">
         <activity
+            android:name=".register.RegisterActivity3"
+            android:exported="true"
+            android:theme="@style/LoginTheme"
+            android:windowSoftInputMode="adjustResize"
+            />
+        <activity
             android:name=".register.RegisterActivity2"
             android:exported="true"
             android:theme="@style/LoginTheme"
-            android:windowSoftInputMode="adjustResize"/>
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".register.RegisterActivity"
             android:exported="true"
