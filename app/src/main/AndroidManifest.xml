@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.hwahae">
+    package="com.birdview.hwahae">
 
     <application
         android:allowBackup="true"
@@ -10,34 +10,34 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HwaHae">
         <activity
-            android:name=".register.RegisterActivity3"
+            android:name="com.birdview.hwahae.register.RegisterActivity3"
             android:exported="true"
             android:theme="@style/LoginTheme"
             android:windowSoftInputMode="adjustResize"
             />
         <activity
-            android:name=".register.RegisterActivity2"
+            android:name="com.birdview.hwahae.register.RegisterActivity2"
             android:exported="true"
             android:theme="@style/LoginTheme"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".register.RegisterActivity"
+            android:name="com.birdview.hwahae.register.RegisterActivity"
             android:exported="true"
             android:theme="@style/LoginTheme"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".login.LoginActivity"
+            android:name="com.birdview.hwahae.login.LoginActivity"
             android:exported="true"
             android:theme="@style/LoginTheme" />
         <activity
-            android:name=".splash.SplashActivity2"
+            android:name="com.birdview.hwahae.splash.SplashActivity2"
             android:exported="true"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".main.MainActivity"
+            android:name="com.birdview.hwahae.main.MainActivity"
             android:exported="true" />
         <activity
-            android:name=".splash.SplashActivity"
+            android:name="com.birdview.hwahae.splash.SplashActivity"
             android:exported="true"
             android:theme="@style/AppTheme">
             <intent-filter>

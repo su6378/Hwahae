@@ -1,4 +1,4 @@
-package com.example.hwahae.login
+package com.birdview.hwahae.login
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,8 +6,8 @@ import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
-import com.example.hwahae.R
-import com.example.hwahae.register.RegisterActivity
+import com.birdview.hwahae.R
+import com.birdview.hwahae.register.RegisterActivity
 import com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
 
 class LoginActivity : AppCompatActivity() {

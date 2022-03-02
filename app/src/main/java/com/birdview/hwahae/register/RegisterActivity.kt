@@ -1,4 +1,4 @@
-package com.example.hwahae.register
+package com.birdview.hwahae.register
 
 import android.content.Intent
 import android.graphics.Color
@@ -10,7 +10,7 @@ import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.example.hwahae.R
+import com.birdview.hwahae.R
 import com.google.firebase.auth.FirebaseAuth
 import com.rengwuxian.materialedittext.MaterialEditText
 import me.codego.view.RoundLayout

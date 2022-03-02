@@ -1,11 +1,11 @@
-package com.example.hwahae.register
+package com.birdview.hwahae.register
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.hwahae.R
+import com.birdview.hwahae.R
 
 class BirthAdapter(private val items: ArrayList<BirthData>) : RecyclerView.Adapter<BirthAdapter.ViewHolder>() {
 

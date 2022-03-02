@@ -1,10 +1,9 @@
-package com.example.hwahae.register
+package com.birdview.hwahae.register
 
 import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -20,7 +19,7 @@ import com.afollestad.materialdialogs.bottomsheets.BottomSheet
 import com.afollestad.materialdialogs.bottomsheets.setPeekHeight
 import com.afollestad.materialdialogs.customview.customView
 import com.afollestad.materialdialogs.customview.getCustomView
-import com.example.hwahae.R
+import com.birdview.hwahae.R
 import com.marcoscg.dialogsheet.DialogSheet
 
 class RegisterActivity2 : AppCompatActivity() {
@@ -64,7 +63,7 @@ class RegisterActivity2 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val binding = com.example.hwahae.databinding.RegisterPage2Binding.inflate(layoutInflater)
+        val binding = com.birdview.hwahae.databinding.RegisterPage2Binding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val email = intent.getStringExtra("email")

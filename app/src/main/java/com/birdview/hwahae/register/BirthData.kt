@@ -1,4 +1,4 @@
-package com.example.hwahae.register
+package com.birdview.hwahae.register
 
 class BirthData(
     val birth: Int,

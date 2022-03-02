@@ -1,8 +1,8 @@
-package com.example.hwahae.main
+package com.birdview.hwahae.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.hwahae.R
+import com.birdview.hwahae.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

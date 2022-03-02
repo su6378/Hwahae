@@ -1,12 +1,11 @@
-package com.example.hwahae.splash
+package com.birdview.hwahae.splash
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import androidx.core.os.postDelayed
-import com.example.hwahae.R
-import com.example.hwahae.main.MainActivity
+import com.birdview.hwahae.R
 
 class SplashActivity : AppCompatActivity() {
 

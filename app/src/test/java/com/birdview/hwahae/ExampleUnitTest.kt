@@ -1,4 +1,4 @@
-package com.example.hwahae
+package com.birdview.hwahae
 
 import org.junit.Test
 

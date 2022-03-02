@@ -1,4 +1,4 @@
-package com.example.hwahae.login
+package com.birdview.hwahae.login
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.hwahae.R
+import com.birdview.hwahae.R
 
 class LoginVP (private val context: Context, loginList: ArrayList<Int>) : RecyclerView.Adapter<LoginVP.PagerViewHolder>() {
     var item = loginList
