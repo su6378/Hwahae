@@ -6,4 +6,257 @@
     android:layout_height="match_parent"
     tools:context=".register.RegisterActivity3">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/register_appBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/backBtn"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginVertical="10dp"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/ic_back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/infoBtn"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginVertical="10dp"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/ic_help"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/register_indicator"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/register_appBar">
+
+        <ImageView
+            android:id="@+id/indicator0_iv_main"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/indicator1_iv_main"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/indicator_default" />
+
+        <ImageView
+            android:id="@+id/indicator1_iv_main"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginStart="5dp"
+            app:layout_constraintBottom_toBottomOf="@+id/indicator0_iv_main"
+            app:layout_constraintLeft_toRightOf="@id/indicator0_iv_main"
+            app:layout_constraintRight_toLeftOf="@id/indicator2_iv_main"
+            app:layout_constraintTop_toTopOf="@+id/indicator0_iv_main"
+            app:srcCompat="@drawable/indicator_default" />
+
+        <ImageView
+            android:id="@+id/indicator2_iv_main"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginStart="5dp"
+            app:layout_constraintBottom_toBottomOf="@+id/indicator1_iv_main"
+            app:layout_constraintLeft_toRightOf="@id/indicator1_iv_main"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/indicator1_iv_main"
+            app:srcCompat="@drawable/indicator_mint" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/register3_nickname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="님"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/register_indicator" />
+
+    <TextView
+        android:id="@+id/register3_commment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="피부타입, 피부고민을 입력해주시면 취향에 맞는\n화장품을 추천해드릴게요!"
+        android:textSize="14sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/register3_nickname" />
+
+    <TextView
+        android:id="@+id/skin_type_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="피부타입"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/register3_commment" />
+
+    <RadioGroup
+        android:id="@+id/skin_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/skin_type_text">
+
+        <RadioButton
+            android:id="@+id/skin_dry"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/skintype_radio"
+            android:button="@android:color/transparent"
+            android:text="건성"
+            android:textAlignment="center"
+            android:textColor="@color/dimgray"
+            android:textSize="16sp" />
+
+        <RadioButton
+            android:id="@+id/skin_neutral"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginHorizontal="10dp"
+            android:background="@drawable/skintype_radio"
+            android:button="@android:color/transparent"
+            android:text="중성"
+            android:textAlignment="center"
+            android:textColor="@color/dimgray"
+            android:textSize="16sp" />
+
+        <RadioButton
+            android:id="@+id/skin_oil"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginHorizontal="10dp"
+            android:background="@drawable/skintype_radio"
+            android:button="@android:color/transparent"
+            android:text="지성"
+            android:textAlignment="center"
+            android:textColor="@color/dimgray"
+            android:textSize="16sp" />
+
+        <RadioButton
+            android:id="@+id/skin_combination"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginHorizontal="10dp"
+            android:background="@drawable/skintype_radio"
+            android:button="@android:color/transparent"
+            android:text="복합성"
+            android:textAlignment="center"
+            android:textColor="@color/dimgray"
+            android:textSize="16sp" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/skin_problem_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="피부고민"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/skin_group" />
+
+    <CheckBox
+        android:id="@+id/skin_noProblem"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/skintype_radio"
+        android:button="@null"
+        android:text="해당없음"
+        android:textAlignment="center"
+        android:textColor="@color/dimgray"
+        app:layout_constraintLeft_toLeftOf="@id/skin_group"
+        app:layout_constraintRight_toLeftOf="@id/skin_atopy"
+        app:layout_constraintTop_toBottomOf="@id/skin_problem_text" />
+
+    <CheckBox
+        android:id="@+id/skin_atopy"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/skintype_radio"
+        android:button="@null"
+        android:text="아토피"
+        android:textAlignment="center"
+        android:textColor="@color/dimgray"
+        app:layout_constraintLeft_toRightOf="@id/skin_noProblem"
+        app:layout_constraintRight_toLeftOf="@id/skin_acne"
+        app:layout_constraintTop_toBottomOf="@id/skin_problem_text" />
+
+    <CheckBox
+        android:id="@+id/skin_acne"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/skintype_radio"
+        android:button="@null"
+        android:text="여드름"
+        android:textAlignment="center"
+        android:textColor="@color/dimgray"
+        app:layout_constraintLeft_toRightOf="@id/skin_atopy"
+        app:layout_constraintRight_toLeftOf="@id/skin_sensibility"
+        app:layout_constraintTop_toBottomOf="@id/skin_problem_text" />
+
+    <CheckBox
+        android:id="@+id/skin_sensibility"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/skintype_radio"
+        android:button="@null"
+        android:text="민감성"
+        android:textAlignment="center"
+        android:textColor="@color/dimgray"
+        app:layout_constraintLeft_toRightOf="@id/skin_acne"
+        app:layout_constraintRight_toRightOf="@id/skin_group"
+        app:layout_constraintTop_toBottomOf="@id/skin_problem_text" />
+
+    <TextView
+        android:id="@+id/nextbtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#CCCCCC"
+        android:gravity="center"
+        android:paddingVertical="14dp"
+        android:text="화해 시작하기"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

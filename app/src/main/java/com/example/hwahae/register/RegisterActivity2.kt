@@ -50,6 +50,7 @@ class RegisterActivity2 : AppCompatActivity() {
     //생년월일
     private lateinit var age_text : TextView
     lateinit var birthAdapter: BirthAdapter
+    private lateinit var birth_baseLine : View
     private var isBirth = false
 
     //다음버튼
@@ -66,6 +67,9 @@ class RegisterActivity2 : AppCompatActivity() {
         val binding = com.example.hwahae.databinding.RegisterPage2Binding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val email = intent.getStringExtra("email")
+        val password = intent.getStringExtra("password")
+        val nickname = intent.getStringExtra("nickname")
 
 
         //뒤로가기
@@ -113,6 +117,7 @@ class RegisterActivity2 : AppCompatActivity() {
 
         //생년월일
         age_text = findViewById(R.id.age_text)
+        birth_baseLine = findViewById(R.id.birth_baseLine)
         binding.ageLayout.setOnClickListener{
             initBirth(BottomSheet(LayoutMode.MATCH_PARENT))
         }
@@ -120,6 +125,7 @@ class RegisterActivity2 : AppCompatActivity() {
         //다음
         nextBtn = findViewById(R.id.nextbtn)
         binding.nextbtn.setOnClickListener {
+
             if (isNext()) {
                 if(isFemale){
                     gender = "여성"
@@ -127,12 +133,11 @@ class RegisterActivity2 : AppCompatActivity() {
                     gender = "남성"
                 }
                 val intent = Intent(this, RegisterActivity3::class.java)
-                intent.putExtra("email", intent.putExtra("email",intent.getStringExtra("email")))
-                intent.putExtra("password", intent.putExtra("password",intent.getStringExtra("password")))
-                intent.putExtra("nickname", intent.putExtra("nickname",intent.getStringExtra("nickname")))
-                intent.putExtra("nickname", intent.putExtra("nickname",intent.getStringExtra("nickname")))
-                intent.putExtra("gender", intent.putExtra("gender",gender))
-                intent.putExtra("birth", intent.putExtra("birth",age_text.text.toString()))
+                intent.putExtra("email", email)
+                intent.putExtra("password", password)
+                intent.putExtra("nickname", nickname)
+                intent.putExtra("gender", gender)
+                intent.putExtra("birth", age_text.text.toString())
                 startActivity(intent)
                 overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left)
             } else {
@@ -173,6 +178,7 @@ class RegisterActivity2 : AppCompatActivity() {
             route_text.text = friends_text?.text.toString()
             route_text.setTextColor(ContextCompat.getColor(this, R.color.black))
             route_baseLine.setBackgroundColor(ContextCompat.getColor(this,R.color.splash_background))
+            isRoute = true
             changeColor()
             dialogSheet.dismiss()
 
@@ -196,6 +202,7 @@ class RegisterActivity2 : AppCompatActivity() {
             route_text.text = youtube_text?.text.toString()
             route_text.setTextColor(ContextCompat.getColor(this, R.color.black))
             route_baseLine.setBackgroundColor(ContextCompat.getColor(this,R.color.splash_background))
+            isRoute = true
             changeColor()
             dialogSheet.dismiss()
 
@@ -219,6 +226,7 @@ class RegisterActivity2 : AppCompatActivity() {
             route_text.text = official_text?.text.toString()
             route_text.setTextColor(ContextCompat.getColor(this, R.color.black))
             route_baseLine.setBackgroundColor(ContextCompat.getColor(this,R.color.splash_background))
+            isRoute = true
             changeColor()
             dialogSheet.dismiss()
 
@@ -241,6 +249,7 @@ class RegisterActivity2 : AppCompatActivity() {
             route_text.text = etc_text?.text.toString()
             route_text.setTextColor(ContextCompat.getColor(this, R.color.black))
             route_baseLine.setBackgroundColor(ContextCompat.getColor(this,R.color.splash_background))
+            isRoute = true
             changeColor()
             dialogSheet.dismiss()
 
@@ -263,6 +272,7 @@ class RegisterActivity2 : AppCompatActivity() {
             route_text.text = appStore_text?.text.toString()
             route_text.setTextColor(ContextCompat.getColor(this, R.color.black))
             route_baseLine.setBackgroundColor(ContextCompat.getColor(this,R.color.splash_background))
+            isRoute = true
             changeColor()
             dialogSheet.dismiss()
 
@@ -285,6 +295,7 @@ class RegisterActivity2 : AppCompatActivity() {
             route_text.text = facebookAD_text?.text.toString()
             route_text.setTextColor(ContextCompat.getColor(this, R.color.black))
             route_baseLine.setBackgroundColor(ContextCompat.getColor(this,R.color.splash_background))
+            isRoute = true
             changeColor()
             dialogSheet.dismiss()
 
@@ -307,6 +318,7 @@ class RegisterActivity2 : AppCompatActivity() {
             route_text.text = cafeBlog_text?.text.toString()
             route_text.setTextColor(ContextCompat.getColor(this, R.color.black))
             route_baseLine.setBackgroundColor(ContextCompat.getColor(this,R.color.splash_background))
+            isRoute = true
             changeColor()
             dialogSheet.dismiss()
 
@@ -329,6 +341,7 @@ class RegisterActivity2 : AppCompatActivity() {
             route_text.text = elevator_text?.text.toString()
             route_text.setTextColor(ContextCompat.getColor(this, R.color.black))
             route_baseLine.setBackgroundColor(ContextCompat.getColor(this,R.color.splash_background))
+            isRoute = true
             changeColor()
             dialogSheet.dismiss()
 
@@ -351,6 +364,7 @@ class RegisterActivity2 : AppCompatActivity() {
             route_text.text = news_text?.text.toString()
             route_text.setTextColor(ContextCompat.getColor(this, R.color.black))
             route_baseLine.setBackgroundColor(ContextCompat.getColor(this,R.color.splash_background))
+            isRoute = true
             changeColor()
             dialogSheet.dismiss()
 
@@ -373,6 +387,7 @@ class RegisterActivity2 : AppCompatActivity() {
             route_text.text = onlineBanner_text?.text.toString()
             route_text.setTextColor(ContextCompat.getColor(this, R.color.black))
             route_baseLine.setBackgroundColor(ContextCompat.getColor(this,R.color.splash_background))
+            isRoute = true
             changeColor()
             dialogSheet.dismiss()
 
@@ -438,6 +453,8 @@ class RegisterActivity2 : AppCompatActivity() {
                 // 클릭 시 이벤트 작성
                 age_text.text = list[position].birth.toString()
                 age_text.setTextColor(ContextCompat.getColor(this@RegisterActivity2,R.color.black))
+                birth_baseLine.setBackgroundColor(ContextCompat.getColor(this@RegisterActivity2,R.color.splash_background))
+                isBirth = true
                 changeColor()
                 dialog.dismiss()
 
@@ -450,7 +467,6 @@ class RegisterActivity2 : AppCompatActivity() {
 
     //다음버튼 색깔 변경 메소드
     private fun changeColor(){
-        Log.d("테스트",isMale.toString()+isFemale.toString()+isRoute.toString()+isBirth.toString())
         if(isMale || isFemale){
              if(isBirth && isRoute){
                  nextBtn.setBackgroundColor(ContextCompat.getColor(this@RegisterActivity2,R.color.splash_background))
