@@ -14,6 +14,9 @@ import androidx.core.content.ContextCompat
 import com.birdview.hwahae.R
 import com.birdview.hwahae.databinding.RegisterPage3Binding
 import com.birdview.hwahae.main.MainActivity
+import com.forms.sti.progresslitieigb.ProgressLoadingIGB
+import com.forms.sti.progresslitieigb.ProgressLoadingJIGB
+import com.forms.sti.progresslitieigb.finishLoadingIGB
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -25,7 +28,7 @@ class RegisterActivity3 : AppCompatActivity() {
     private var isSkin = false
 
     //피부고민
-    private var problem = ""
+    private var problem = ArrayList<String>()
     private var isProblem = false
     private lateinit var skinNoProblem: CheckBox
     private lateinit var skinAtopy: CheckBox
@@ -127,21 +130,28 @@ class RegisterActivity3 : AppCompatActivity() {
         nextBtn = findViewById(R.id.nextbtn)
         auth = FirebaseAuth.getInstance()
         binding.nextbtn.setOnClickListener {
-            auth.createUserWithEmailAndPassword(email!!, password!!)
-                .addOnCompleteListener { result ->
-                    if (result.isSuccessful) {
-                        Toast.makeText(this, "회원가입이 완료되었습니다.", Toast.LENGTH_SHORT).show()
-                        if (auth.currentUser != null) {
-                            createAccout()
-                            var intent = Intent(this, MainActivity::class.java)
-                            startActivity(intent)
-                        }
-                    } else if (result.exception?.message.isNullOrEmpty()) {
-                        Toast.makeText(this, "오류가 발생했습니다.", Toast.LENGTH_SHORT).show()
-                    } else {
-                        //login(email, password)
-                    }
+            if(isNext()){
+                ProgressLoadingIGB.startLoadingIGB(this){
+                    message = "잠시만 기다려주세요."
+                    srcLottieJson = R.raw.skin_care
+                    hight = 500 // Optional
+                    width = 500 // Optional
                 }
+                auth.createUserWithEmailAndPassword(email!!, password!!)
+                    .addOnCompleteListener { result ->
+                        if (result.isSuccessful) {
+                            if (auth.currentUser != null) {
+                                createAccout()
+                            }
+                        } else if (result.exception?.message.isNullOrEmpty()) {
+                            Toast.makeText(this, "오류가 발생했습니다.", Toast.LENGTH_SHORT).show()
+                        } else {
+
+                        }
+                    }
+            }else{
+
+            }
         }
 
     }
@@ -150,7 +160,8 @@ class RegisterActivity3 : AppCompatActivity() {
         if (isChecked) {
             when (buttonView.id) {
                 R.id.skin_noProblem -> {
-                    problem = "해당없음"
+                    problem.clear()
+                    problem.add("해당없음")
                     skinNoProblem.setTextColor(ContextCompat.getColor(this, R.color.white))
                     skinAtopy.setTextColor(ContextCompat.getColor(this, R.color.dimgray))
                     skinAcne.setTextColor(ContextCompat.getColor(this, R.color.dimgray))
@@ -163,7 +174,10 @@ class RegisterActivity3 : AppCompatActivity() {
 
                 }
                 R.id.skin_atopy -> {
-                    problem = "아토피"
+                    if(problem.contains("해당없음")){
+                        problem.remove("해당없음")
+                    }
+                    problem.add("아토피")
                     skinAtopy.setTextColor(ContextCompat.getColor(this, R.color.white))
                     skinNoProblem.setTextColor(ContextCompat.getColor(this, R.color.dimgray))
                     skinNoProblem.isChecked = false
@@ -171,7 +185,10 @@ class RegisterActivity3 : AppCompatActivity() {
                     changeColor()
                 }
                 R.id.skin_acne -> {
-                    problem = "여드름"
+                    if(problem.contains("해당없음")){
+                        problem.remove("해당없음")
+                    }
+                    problem.add("여드름")
                     skinAcne.setTextColor(ContextCompat.getColor(this, R.color.white))
                     skinNoProblem.setTextColor(ContextCompat.getColor(this, R.color.dimgray))
                     skinNoProblem.isChecked = false
@@ -179,7 +196,10 @@ class RegisterActivity3 : AppCompatActivity() {
                     changeColor()
                 }
                 R.id.skin_sensibility -> {
-                    problem = "민감성"
+                    if(problem.contains("해당없음")){
+                        problem.remove("해당없음")
+                    }
+                    problem.add("민감성")
                     skinSensibility.setTextColor(ContextCompat.getColor(this, R.color.white))
                     skinNoProblem.setTextColor(ContextCompat.getColor(this, R.color.dimgray))
                     skinNoProblem.isChecked = false
@@ -190,21 +210,25 @@ class RegisterActivity3 : AppCompatActivity() {
         } else {
             when(buttonView.id){
                 R.id.skin_noProblem ->{
+                    problem.remove("해당없음")
                     isProblem = false
                     skinNoProblem.setTextColor(ContextCompat.getColor(this, R.color.dimgray))
                     changeColor()
                 }
                 R.id.skin_atopy -> {
+                    problem.remove("아토피")
                     skinAtopy.setTextColor(ContextCompat.getColor(this, R.color.dimgray))
                     checkSkin()
                     changeColor()
                 }
                 R.id.skin_acne -> {
+                    problem.remove("여드름")
                     skinAcne.setTextColor(ContextCompat.getColor(this, R.color.dimgray))
                     checkSkin()
                     changeColor()
                 }
                 R.id.skin_sensibility -> {
+                    problem.remove("민감성")
                     skinSensibility.setTextColor(ContextCompat.getColor(this, R.color.dimgray))
                     checkSkin()
                     changeColor()
@@ -237,11 +261,17 @@ class RegisterActivity3 : AppCompatActivity() {
             "nickname" to nickname,
             "gender" to gender,
             "birth" to birth,
+            "problem" to problem
         )
 
         db.collection("user").document(email!!)
             .set(user)
-            .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully written!") }
+            .addOnSuccessListener {
+                //데이터 삽입 성공 시 프로그레스바 제거 후 메인 엑티비티로 이동
+                finishLoadingIGB()
+                var intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+            }
             .addOnFailureListener { e -> Log.w(TAG, "Error writing document", e) }
     }
 
@@ -257,5 +287,10 @@ class RegisterActivity3 : AppCompatActivity() {
         } else {
             nextBtn.setBackgroundColor(Color.parseColor("#CCCCCC"))
         }
+    }
+
+    //다음버튼 진행 메소드
+    private fun isNext():Boolean{
+        return isSkin&&isProblem
     }
 }

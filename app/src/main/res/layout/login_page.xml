@@ -146,7 +146,7 @@
     <View
         android:layout_width="0dp"
         android:layout_height="1dp"
-        android:background="@color/black"
+        android:background="@android:color/darker_gray"
         app:layout_constraintLeft_toLeftOf="@id/registerBtn"
         app:layout_constraintRight_toRightOf="@id/registerBtn"
         app:layout_constraintTop_toBottomOf="@id/registerBtn" />

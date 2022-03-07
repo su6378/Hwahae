@@ -319,17 +319,5 @@ class RegisterActivity : AppCompatActivity() {
         return email_check && password_check && all_check && nickname_check
     }
 
-    private fun createEmail() {
-        firebaseAuth!!.createUserWithEmailAndPassword(
-            register_email.toString().trim(),
-            register_password.toString().trim()
-        )
-            .addOnCompleteListener(this) {
-                if (it.isSuccessful) {
-                    val user = firebaseAuth?.currentUser
-                }
-            }
-    }
-
 }
 

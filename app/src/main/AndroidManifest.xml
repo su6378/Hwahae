@@ -10,34 +10,43 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HwaHae">
         <activity
-            android:name="com.birdview.hwahae.register.RegisterActivity3"
-            android:exported="true"
+            android:name=".login.FindActivity"
+            android:exported="false"
             android:theme="@style/LoginTheme"
-            android:windowSoftInputMode="adjustResize"
-            />
+            android:windowSoftInputMode="adjustResize"/>
         <activity
-            android:name="com.birdview.hwahae.register.RegisterActivity2"
+            android:name=".login.LoginActivity2"
+            android:exported="false"
+            android:theme="@style/LoginTheme"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".register.RegisterActivity3"
             android:exported="true"
             android:theme="@style/LoginTheme"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name="com.birdview.hwahae.register.RegisterActivity"
+            android:name=".register.RegisterActivity2"
             android:exported="true"
             android:theme="@style/LoginTheme"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name="com.birdview.hwahae.login.LoginActivity"
+            android:name=".register.RegisterActivity"
+            android:exported="true"
+            android:theme="@style/LoginTheme"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".login.LoginActivity"
             android:exported="true"
             android:theme="@style/LoginTheme" />
         <activity
-            android:name="com.birdview.hwahae.splash.SplashActivity2"
+            android:name=".splash.SplashActivity2"
             android:exported="true"
             android:theme="@style/AppTheme" />
         <activity
-            android:name="com.birdview.hwahae.main.MainActivity"
+            android:name=".main.MainActivity"
             android:exported="true" />
         <activity
-            android:name="com.birdview.hwahae.splash.SplashActivity"
+            android:name=".splash.SplashActivity"
             android:exported="true"
             android:theme="@style/AppTheme">
             <intent-filter>

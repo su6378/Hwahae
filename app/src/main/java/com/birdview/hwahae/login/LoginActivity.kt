@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
 import com.birdview.hwahae.R
 import com.birdview.hwahae.register.RegisterActivity
+import com.github.nikartm.button.FitButton
 import com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
 
 class LoginActivity : AppCompatActivity() {
@@ -24,6 +25,14 @@ class LoginActivity : AppCompatActivity() {
         //indicator 부분 연결
         val login_indicator = findViewById<WormDotsIndicator>(R.id.login_indicator)
         login_indicator.setViewPager2(login_vp)
+
+        //이메일로 로그인
+        val email_loginBtn = findViewById<FitButton>(R.id.email_loginBtn)
+        email_loginBtn.setOnClickListener{
+            val intent = Intent(this,LoginActivity2::class.java)
+            startActivity(intent)
+            overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left)
+        }
 
         //회원가입 버튼
         val registerBtn = findViewById<TextView>(R.id.registerBtn)
