@@ -4,9 +4,11 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/josooyun/Android/Hwahae/app/src/main/res/drawable/skintype_radio.xml" value="0.246" />
+        <entry key="..\:/josooyun/Android/Hwahae/app/src/main/res/layout/activity_main.xml" value="0.36614583333333334" />
         <entry key="..\:/josooyun/Android/Hwahae/app/src/main/res/layout/login_find_page.xml" value="0.36614583333333334" />
         <entry key="..\:/josooyun/Android/Hwahae/app/src/main/res/layout/login_page.xml" value="0.1890625" />
         <entry key="..\:/josooyun/Android/Hwahae/app/src/main/res/layout/login_page2.xml" value="0.1890625" />
+        <entry key="..\:/josooyun/Android/Hwahae/app/src/main/res/layout/main_page.xml" value="0.36614583333333334" />
         <entry key="..\:/josooyun/Android/Hwahae/app/src/main/res/layout/register_page.xml" value="0.1875" />
         <entry key="..\:/josooyun/Android/Hwahae/app/src/main/res/layout/register_page2.xml" value="0.1875" />
         <entry key="..\:/josooyun/Android/Hwahae/app/src/main/res/layout/register_page3.xml" value="0.33" />

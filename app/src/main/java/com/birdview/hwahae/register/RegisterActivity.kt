@@ -242,7 +242,7 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     //이메일 유효성 체크 메소드
-    fun checkEmail(): Boolean {
+    private fun checkEmail(): Boolean {
         var email = register_email.text.toString().trim() //공백제거
         val e = Pattern.matches(emailValidation, email)
 
