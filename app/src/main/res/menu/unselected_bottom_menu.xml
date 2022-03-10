@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/fragHome"
+        android:icon="@drawable/ic_home"
+        android:title="홈" />
+
+    <item
+        android:id="@+id/fragObserve"
+        android:icon="@drawable/ic_home"
+        android:title="발견" />
+
+    <item
+        android:id="@+id/fragShopping"
+        android:icon="@drawable/ic_home"
+        android:title="화해쇼핑" />
+
+    <item
+        android:id="@+id/fragMy"
+        android:icon="@drawable/ic_home"
+        android:title="MY" />
+</menu>

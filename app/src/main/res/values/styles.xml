@@ -21,4 +21,17 @@
         <item name="colorAccent">@color/white</item>
     </style>
 
+    <style name="BottomNavigation" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="itemTextAppearance">@style/BottomNavigationText</item>
+        <item name="itemTextColor">@color/black</item>
+    </style>
+
+    <style name="BottomNavigationText" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">14sp</item>
+        <item name="itemTextColor">@color/black</item>
+    </style>
+
+
+
+
 </resources>

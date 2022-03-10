@@ -3,15 +3,27 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/josooyun/Android/Hwahae/app/src/main/res/drawable-v24/bottom_home_icon.xml" value="0.2315" />
+        <entry key="..\:/josooyun/Android/Hwahae/app/src/main/res/drawable-v24/bottom_mypage_icon.xml" value="0.2315" />
+        <entry key="..\:/josooyun/Android/Hwahae/app/src/main/res/drawable-v24/bottom_observe_icon.xml" value="0.2315" />
+        <entry key="..\:/josooyun/Android/Hwahae/app/src/main/res/drawable-v24/bottom_shopping_icon.xml" value="0.2315" />
+        <entry key="..\:/josooyun/Android/Hwahae/app/src/main/res/drawable/bottom_color.xml" value="0.246" />
+        <entry key="..\:/josooyun/Android/Hwahae/app/src/main/res/drawable/bottom_home_icon.xml" value="0.2315" />
         <entry key="..\:/josooyun/Android/Hwahae/app/src/main/res/drawable/skintype_radio.xml" value="0.246" />
         <entry key="..\:/josooyun/Android/Hwahae/app/src/main/res/layout/activity_main.xml" value="0.36614583333333334" />
         <entry key="..\:/josooyun/Android/Hwahae/app/src/main/res/layout/login_find_page.xml" value="0.36614583333333334" />
         <entry key="..\:/josooyun/Android/Hwahae/app/src/main/res/layout/login_page.xml" value="0.1890625" />
         <entry key="..\:/josooyun/Android/Hwahae/app/src/main/res/layout/login_page2.xml" value="0.1890625" />
+        <entry key="..\:/josooyun/Android/Hwahae/app/src/main/res/layout/main_home_page.xml" value="0.36614583333333334" />
+        <entry key="..\:/josooyun/Android/Hwahae/app/src/main/res/layout/main_my_page.xml" value="0.36614583333333334" />
+        <entry key="..\:/josooyun/Android/Hwahae/app/src/main/res/layout/main_observe_page.xml" value="0.36614583333333334" />
         <entry key="..\:/josooyun/Android/Hwahae/app/src/main/res/layout/main_page.xml" value="0.36614583333333334" />
+        <entry key="..\:/josooyun/Android/Hwahae/app/src/main/res/layout/main_shop_page.xml" value="0.36614583333333334" />
         <entry key="..\:/josooyun/Android/Hwahae/app/src/main/res/layout/register_page.xml" value="0.1875" />
         <entry key="..\:/josooyun/Android/Hwahae/app/src/main/res/layout/register_page2.xml" value="0.1875" />
         <entry key="..\:/josooyun/Android/Hwahae/app/src/main/res/layout/register_page3.xml" value="0.33" />
+        <entry key="..\:/josooyun/Android/Hwahae/app/src/main/res/menu/bottom_menu.xml" value="0.36614583333333334" />
+        <entry key="..\:/josooyun/Android/Hwahae/app/src/main/res/menu/unselected_bottom_menu.xml" value="0.36614583333333334" />
         <entry key="..\:/josooyun/AndroidProject/HwaHae/app/src/main/res/drawable/box_stroke.xml" value="0.3734375" />
         <entry key="..\:/josooyun/AndroidProject/HwaHae/app/src/main/res/drawable/ic_launcher_background.xml" value="0.27447916666666666" />
         <entry key="..\:/josooyun/AndroidProject/HwaHae/app/src/main/res/drawable/indicator_default.xml" value="0.3676923076923077" />
