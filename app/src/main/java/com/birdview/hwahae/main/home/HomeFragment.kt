@@ -56,7 +56,6 @@ class HomeFragment : Fragment() {
         viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
-                Log.e("ViewPagerFragment", "Page ${position + 1}")
             }
         })
 
