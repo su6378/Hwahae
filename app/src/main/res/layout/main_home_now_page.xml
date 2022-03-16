@@ -199,6 +199,7 @@
                     android:text="이 제품 어때요?"
                     android:textColor="@color/black"
                     android:textSize="20sp"
+                    android:layout_marginTop="-4dp"
                     android:textStyle="bold"
                     app:layout_constraintLeft_toLeftOf="@id/nickname"
                     app:layout_constraintTop_toBottomOf="@id/nickname_underline" />
@@ -261,10 +262,42 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                tools:itemCount="6"
                 app:spanCount="2"
                 android:orientation="horizontal"
                 tools:listitem="@layout/recommend_item"
                 app:layout_constraintTop_toBottomOf="@id/newnhot_text"/>
+
+            <com.birdview.hwahae.util.NestedScrollableHost
+                android:id="@+id/ad_vp_parent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                app:layout_constraintTop_toBottomOf="@id/newnhot_recyclerview">
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/ad_vp"
+                    android:layout_width="match_parent"
+                    android:layout_height="140dp"
+                    android:nestedScrollingEnabled="true"
+                    />
+
+            </com.birdview.hwahae.util.NestedScrollableHost>
+            
+            <com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
+                android:id="@+id/ad_indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:dotsColor="@color/black"
+                app:dotsCornerRadius="8dp"
+                app:dotsStrokeWidth="1dp"
+                app:dotsStrokeColor="@color/lightgrey"
+                app:dotsSize="5dp"
+                app:dotsSpacing="2dp"
+                app:layout_constraintLeft_toLeftOf="@id/ad_vp_parent"
+                app:layout_constraintRight_toRightOf="@id/ad_vp_parent"
+                app:layout_constraintTop_toBottomOf="@id/ad_vp_parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
