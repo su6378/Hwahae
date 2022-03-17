@@ -10,14 +10,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
-import com.birdview.hwahae.R
-import com.birdview.hwahae.databinding.LoginFindPageBinding
 import com.birdview.hwahae.databinding.MainHomeNowPageBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
-import com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
 
 
 class NowFragment : Fragment() {
@@ -50,6 +47,11 @@ class NowFragment : Fragment() {
     private lateinit var shoppingAdapter: ShoppingAdapter
     private val shoppingData = mutableListOf<ShoppingData>()
 
+    //신상 sale 특가
+    private lateinit var newProduct_recyclerview: RecyclerView
+    private lateinit var newProductAdapter: NewProductAdapter
+    private val newProductData = mutableListOf<NewProductData>()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -76,6 +78,11 @@ class NowFragment : Fragment() {
         //화해쇼핑
         shopping_recyclerview = binding.shoppingRecyclerview
         initShopping()
+
+        //신상 sale 기획전
+        newProduct_recyclerview = binding.newProductRecyclerview
+        initNewProduct()
+
 
         return binding.root
     }
@@ -238,9 +245,15 @@ class NowFragment : Fragment() {
         shoppingAdapter = ShoppingAdapter(requireContext())
         shopping_recyclerview.adapter = shoppingAdapter
 
-        val shoppingList = arrayListOf<String>("baobab_soap","centella_ample_remover","snature_aqua_cream","ampleN_ceramide_shot","ahc_purerescue_eyecream")
+        val shoppingList = arrayListOf<String>(
+            "baobab_soap",
+            "centella_ample_remover",
+            "snature_aqua_cream",
+            "ampleN_ceramide_shot",
+            "ahc_purerescue_eyecream"
+        )
 
-        for(i in 0 until shoppingList.size) {
+        for (i in 0 until shoppingList.size) {
             Firebase.storage.reference.child("shopping/" + shoppingList[i] + ".png").downloadUrl.addOnCompleteListener {
                 if (it.isSuccessful) {
 
@@ -287,6 +300,65 @@ class NowFragment : Fragment() {
         shoppingAdapter.setOnItemClickListener(object : ShoppingAdapter.OnItemClickListener {
             override fun onItemClick(v: View, data: ShoppingData, pos: Int) {
                 Log.d("테스트", data.title)
+            }
+
+        })
+    }
+
+    //신상 sale 기획전
+    private fun initNewProduct() {
+        newProductAdapter = NewProductAdapter(requireContext())
+        newProduct_recyclerview.adapter = newProductAdapter
+
+        val newProductList = arrayListOf<String>("birch_toneup_suncream")
+
+        for (i in 0 until newProductList.size) {
+            Firebase.storage.reference.child("product/" + newProductList[i] + ".png").downloadUrl.addOnCompleteListener {
+                if (it.isSuccessful) {
+
+                    val docRef = db.collection("product").document(newProductList[i])
+                    docRef.get()
+                        .addOnSuccessListener { document ->
+                            if (document != null) {
+                                val company = document.getString("company")
+                                val name = document.getString("name")!!.replace("\\n", "\n")
+                                val price = document.getString("price")
+                                val sale = document.getString("sale")
+                                val salePrice = document.getString("salePrice")
+
+                                newProductData.apply {
+                                    add(
+                                        NewProductData(
+                                            image = it.result,
+                                            company = company!!,
+                                            name = name,
+                                            price = price!!,
+                                            sale = sale!!,
+                                            salePrice = salePrice!!
+                                        )
+                                    )
+
+                                    newProductAdapter.datas = newProductData
+                                    newProductAdapter.notifyDataSetChanged()
+
+
+                                }
+
+                            } else {
+                            }
+                        }
+                        .addOnFailureListener { exception ->
+                            Log.d(TAG, "상품 정보 불러오기 실패")
+                        }
+
+                }
+            }
+        }
+
+
+        newProductAdapter.setOnItemClickListener(object : NewProductAdapter.OnItemClickListener {
+            override fun onItemClick(v: View, data: NewProductData, pos: Int) {
+                Log.d("테스트", data.name)
             }
 
         })
