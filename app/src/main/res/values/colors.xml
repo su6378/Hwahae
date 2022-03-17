@@ -16,4 +16,5 @@
     <color name="gainsboro">#DCDCDC</color>
     <color name="red">#FF0000</color>
     <color name="bottom">#FAFAFA</color>
+    <color name="sale">#F86755</color>
 </resources>

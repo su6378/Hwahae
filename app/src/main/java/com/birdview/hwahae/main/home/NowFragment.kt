@@ -1,5 +1,6 @@
 package com.birdview.hwahae.main.home
 
+import android.content.ContentValues.TAG
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -12,12 +13,18 @@ import androidx.viewpager2.widget.ViewPager2
 import com.birdview.hwahae.R
 import com.birdview.hwahae.databinding.LoginFindPageBinding
 import com.birdview.hwahae.databinding.MainHomeNowPageBinding
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
 
 
 class NowFragment : Fragment() {
+
+    //Firebase
+    val db = FirebaseFirestore.getInstance()
+    private lateinit var auth: FirebaseAuth
 
     //뷰바인딩
     private var mBinding: MainHomeNowPageBinding? = null
@@ -34,10 +41,14 @@ class NowFragment : Fragment() {
     private val newnhotData = mutableListOf<NewnHotData>()
 
     //광고 뷰페이저
-    private lateinit var ad_vp : ViewPager2
-    private lateinit var adVP : AdVP
+    private lateinit var ad_vp: ViewPager2
+    private lateinit var adVP: AdVP
     private val adData = mutableListOf<Uri>()
 
+    //화해쇼핑
+    private lateinit var shopping_recyclerview: RecyclerView
+    private lateinit var shoppingAdapter: ShoppingAdapter
+    private val shoppingData = mutableListOf<ShoppingData>()
 
 
     override fun onCreateView(
@@ -45,7 +56,11 @@ class NowFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        mBinding = MainHomeNowPageBinding.inflate(inflater,container,false)
+        mBinding = MainHomeNowPageBinding.inflate(inflater, container, false)
+
+        //닉네임
+        auth = FirebaseAuth.getInstance()
+        initNickname()
 
         //이 제품 어때요?
         recommend_recyclerview = binding.recommendRecyclerview
@@ -58,7 +73,29 @@ class NowFragment : Fragment() {
         //광고 뷰페이저
         initAd()
 
+        //화해쇼핑
+        shopping_recyclerview = binding.shoppingRecyclerview
+        initShopping()
+
         return binding.root
+    }
+
+    //닉네임
+    private fun initNickname() {
+        val user = auth.currentUser
+        val email = user?.email
+        val docRef = db.collection("user").document(email!!)
+        docRef.get()
+            .addOnSuccessListener { document ->
+                if (document != null) {
+                    val nickname = document.getString("nickname")
+                    binding.nickname.text = nickname
+                } else {
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.d(TAG, "유저 정보 불러오기 실패")
+            }
     }
 
     //이 제품 어때요? 리사이클러뷰 초기화
@@ -162,7 +199,7 @@ class NowFragment : Fragment() {
     private fun initAd() {
 
         ad_vp = binding.adVp
-        adVP = AdVP(requireContext(),getAdList())
+        adVP = AdVP(requireContext(), getAdList())
         ad_vp.adapter = adVP
         ad_vp.orientation = ViewPager2.ORIENTATION_HORIZONTAL
 
@@ -182,12 +219,11 @@ class NowFragment : Fragment() {
 
                     adData.apply {
                         add(
-                           it.result
+                            it.result
                         )
 
                         adVP.item = adData
                         adVP.notifyDataSetChanged()
-                        Log.d("xptmxm",adData.size.toString())
 
                     }
                 }
@@ -196,5 +232,65 @@ class NowFragment : Fragment() {
         }
         return adData
     }
+
+    //화해쇼핑
+    private fun initShopping() {
+        shoppingAdapter = ShoppingAdapter(requireContext())
+        shopping_recyclerview.adapter = shoppingAdapter
+
+        val shoppingList = arrayListOf<String>("baobab_soap","centella_ample_remover","snature_aqua_cream","ampleN_ceramide_shot","ahc_purerescue_eyecream")
+
+        for(i in 0 until shoppingList.size) {
+            Firebase.storage.reference.child("shopping/" + shoppingList[i] + ".png").downloadUrl.addOnCompleteListener {
+                if (it.isSuccessful) {
+
+                    val docRef = db.collection("product").document(shoppingList[i])
+                    docRef.get()
+                        .addOnSuccessListener { document ->
+                            if (document != null) {
+                                val title = document.getString("title")!!.replace("\\n", "\n")
+                                val tag = document.getString("tag")
+                                val price = document.getString("price")
+                                val sale = document.getString("sale")
+                                val salePrice = document.getString("salePrice")
+
+                                shoppingData.apply {
+                                    add(
+                                        ShoppingData(
+                                            image = it.result,
+                                            title = title,
+                                            tag = tag!!,
+                                            price = price!!,
+                                            sale = sale!!,
+                                            salePrice = salePrice!!
+                                        )
+                                    )
+
+                                    shoppingAdapter.datas = shoppingData
+                                    shoppingAdapter.notifyDataSetChanged()
+
+
+                                }
+
+                            } else {
+                            }
+                        }
+                        .addOnFailureListener { exception ->
+                            Log.d(TAG, "상품 정보 불러오기 실패")
+                        }
+
+                }
+            }
+        }
+
+
+        shoppingAdapter.setOnItemClickListener(object : ShoppingAdapter.OnItemClickListener {
+            override fun onItemClick(v: View, data: ShoppingData, pos: Int) {
+                Log.d("테스트", data.title)
+            }
+
+        })
+    }
+
 
 }
