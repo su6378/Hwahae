@@ -1,12 +1,12 @@
-package com.birdview.hwahae.main.home
+package com.birdview.hwahae.main.home.now
 
 import android.net.Uri
 
-data class NewProductData(
+data class ShoppingData(
     val image : Uri,
-    val company : String,
-    val name : String,
+    val title : String,
+    val tag : String,
     val price : String,
     val sale : String,
     val salePrice : String
-)
+    )

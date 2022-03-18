@@ -1,4 +1,4 @@
-package com.birdview.hwahae.main.home
+package com.birdview.hwahae.main.home.now
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -9,13 +9,14 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.birdview.hwahae.R
 import com.bumptech.glide.Glide
+import com.github.nikartm.button.FitButton
 
-class NewProductAdapter(private val context: Context) :
-    RecyclerView.Adapter<NewProductAdapter.ViewHolder>() {
-    var datas = mutableListOf<NewProductData>()
+class NewnHotAdapter(private val context: Context) :
+    RecyclerView.Adapter<NewnHotAdapter.ViewHolder>() {
+    var datas = mutableListOf<NewnHotData>()
 
     interface OnItemClickListener {
-        fun onItemClick(v: View, data: NewProductData, pos: Int)
+        fun onItemClick(v: View, data: NewnHotData, pos: Int)
     }
 
     private var listener: OnItemClickListener? = null
@@ -24,12 +25,17 @@ class NewProductAdapter(private val context: Context) :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(context).inflate(R.layout.main_home_now_newproduct_item, parent, false)
+        val view = LayoutInflater.from(context).inflate(R.layout.newnhot_item, parent, false)
         return ViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: NewProductAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(datas[position])
+
+        if(datas[position].name.equals("레티놀 시카 흔적 앰플") || datas[position].name.equals("1025 독도 선크림\n" +
+                    "[SPF50+/PA++++]")){
+            holder.itemView.findViewById<FitButton>(R.id.new_icon).visibility = View.VISIBLE
+        }
     }
 
     override fun getItemCount(): Int = datas.size
@@ -39,19 +45,12 @@ class NewProductAdapter(private val context: Context) :
         private val product_image: ImageView = itemView.findViewById(R.id.product_image)
         private val product_company: TextView = itemView.findViewById(R.id.product_company)
         private val product_name: TextView = itemView.findViewById(R.id.product_name)
-        private val product_price : TextView = itemView.findViewById(R.id.product_price)
-        private val product_sale : TextView = itemView.findViewById(R.id.product_sale)
-        private val product_salePrice : TextView = itemView.findViewById(R.id.product_salePrice)
+        private val new_icon : FitButton = itemView.findViewById(R.id.new_icon)
 
-        fun bind(item: NewProductData) {
-
+        fun bind(item: NewnHotData) {
             product_company.text = item.company
             product_name.text = item.name
-            product_price.text = item.price
-            product_sale.text = item.sale
-            product_salePrice.text = item.salePrice
-
-            Glide.with(itemView).load(item.image).fitCenter().into(product_image)
+            Glide.with(itemView).load(item.image).into(product_image)
 
             val pos = bindingAdapterPosition
             if (pos != RecyclerView.NO_POSITION) {

@@ -25,13 +25,16 @@
 
     <TextView
         android:id="@+id/product_title"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:maxLines="2"
+        android:paddingRight="10dp"
         app:layout_constraintTop_toTopOf="@id/roundLayout"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="15dp"
         app:layout_constraintLeft_toRightOf="@id/roundLayout"
-        android:textSize="16sp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:textSize="15sp"
         android:text="테스트"
         android:textColor="@color/black"/>
     <TextView

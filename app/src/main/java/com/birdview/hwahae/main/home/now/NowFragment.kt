@@ -1,4 +1,4 @@
-package com.birdview.hwahae.main.home
+package com.birdview.hwahae.main.home.now
 
 import android.content.ContentValues.TAG
 import android.net.Uri
@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.birdview.hwahae.databinding.MainHomeNowPageBinding
+import com.birdview.hwahae.main.home.*
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
@@ -52,6 +53,12 @@ class NowFragment : Fragment() {
     private lateinit var newProductAdapter: NewProductAdapter
     private val newProductData = mutableListOf<NewProductData>()
 
+    //뷰티ON
+    private lateinit var beautyOn_recyclerview: RecyclerView
+    private lateinit var beautyOnAdapter: BeautyOnAdapter
+    private val beautyOnData = mutableListOf<BeautyOnData>()
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -82,6 +89,10 @@ class NowFragment : Fragment() {
         //신상 sale 기획전
         newProduct_recyclerview = binding.newProductRecyclerview
         initNewProduct()
+        
+        //뷰티ON
+        beautyOn_recyclerview = binding.beautyONRecyclerview
+        initBeautyON()
 
 
         return binding.root
@@ -310,7 +321,7 @@ class NowFragment : Fragment() {
         newProductAdapter = NewProductAdapter(requireContext())
         newProduct_recyclerview.adapter = newProductAdapter
 
-        val newProductList = arrayListOf<String>("birch_toneup_suncream")
+        val newProductList = arrayListOf<String>("birch_toneup_suncream","birch_soothing_gel","dokdo_cleansing_milk","dokdo_bubble_form","aqua_gel_mask","inteca_soothing_ample","makprem_cleansing_milk")
 
         for (i in 0 until newProductList.size) {
             Firebase.storage.reference.child("product/" + newProductList[i] + ".png").downloadUrl.addOnCompleteListener {
@@ -359,6 +370,58 @@ class NowFragment : Fragment() {
         newProductAdapter.setOnItemClickListener(object : NewProductAdapter.OnItemClickListener {
             override fun onItemClick(v: View, data: NewProductData, pos: Int) {
                 Log.d("테스트", data.name)
+            }
+
+        })
+    }
+
+    //뷰티ON
+    private fun initBeautyON(){
+        beautyOnAdapter = BeautyOnAdapter(requireContext())
+        beautyOn_recyclerview.adapter = beautyOnAdapter
+
+        val beautyOnList = arrayListOf<String>("hair_care","hair_problem","trouble","pery_pera","honey_sleep","spring_lip")
+
+        for (i in 0 until beautyOnList.size) {
+            Firebase.storage.reference.child("beauty/" + beautyOnList[i] + ".png").downloadUrl.addOnCompleteListener {
+                if (it.isSuccessful) {
+
+                    val docRef = db.collection("beauty").document(beautyOnList[i])
+                    docRef.get()
+                        .addOnSuccessListener { document ->
+                            if (document != null) {
+                                val title = document.getString("title")
+                                val content = document.getString("content")
+
+                                beautyOnData.apply {
+                                    add(
+                                        BeautyOnData(
+                                            image = it.result,
+                                            title = title!!,
+                                            content = content!!
+                                        )
+                                    )
+
+                                    beautyOnAdapter.datas = beautyOnData
+                                    beautyOnAdapter.notifyDataSetChanged()
+
+                                }
+
+                            } else {
+                            }
+                        }
+                        .addOnFailureListener { exception ->
+                            Log.d(TAG, "상품 정보 불러오기 실패")
+                        }
+
+                }
+            }
+        }
+
+
+        beautyOnAdapter.setOnItemClickListener(object : BeautyOnAdapter.OnItemClickListener {
+            override fun onItemClick(v: View, data: BeautyOnData, pos: Int) {
+                Log.d("테스트", data.title)
             }
 
         })

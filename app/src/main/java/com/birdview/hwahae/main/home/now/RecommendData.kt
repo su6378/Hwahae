@@ -1,4 +1,4 @@
-package com.birdview.hwahae.main.home
+package com.birdview.hwahae.main.home.now
 
 import android.net.Uri
 

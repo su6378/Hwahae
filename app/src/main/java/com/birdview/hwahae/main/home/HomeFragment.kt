@@ -2,7 +2,6 @@ package com.birdview.hwahae.main.home
 
 import android.graphics.Typeface
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,9 +10,9 @@ import android.widget.TextView
 import androidx.core.view.forEachIndexed
 import androidx.viewpager2.widget.ViewPager2
 import com.birdview.hwahae.R
+import com.birdview.hwahae.main.home.now.NowFragment
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import org.w3c.dom.Text
 
 
 class HomeFragment : Fragment() {
