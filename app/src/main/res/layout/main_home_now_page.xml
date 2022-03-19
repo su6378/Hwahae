@@ -13,6 +13,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/now_scrollview"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -728,7 +729,33 @@
                 android:layout_height="100dp"
                 app:layout_constraintTop_toBottomOf="@id/line3"/>
 
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
+
+    <me.codego.view.RoundLayout
+        android:visibility="invisible"
+        android:id="@+id/scrollUpBtn"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        app:round_radius="30dp"
+        android:elevation="1dp"
+        app:round_stroke_width="1dp"
+        app:round_stroke_color="#CCCCCC"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_margin="20dp"
+        android:layout_gravity="bottom|end">
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:tint="@color/black"
+            android:src="@drawable/ic_up"/>
+    </me.codego.view.RoundLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

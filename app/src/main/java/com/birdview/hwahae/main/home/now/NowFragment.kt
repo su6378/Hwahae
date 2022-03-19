@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ScrollView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.birdview.hwahae.databinding.MainHomeNowPageBinding
@@ -31,33 +32,37 @@ class NowFragment : Fragment() {
     //이 제품 어때요?
     private lateinit var recommend_recyclerview: RecyclerView
     private lateinit var recommendAdapter: RecommendAdapter
-    private val recommendData = mutableListOf<RecommendData>()
+    private var recommendData = mutableListOf<RecommendData>()
 
     //NEW인기신제품
     private lateinit var newnhot_recyclerview: RecyclerView
     private lateinit var newnhotAdapter: NewnHotAdapter
-    private val newnhotData = mutableListOf<NewnHotData>()
+    private var newnhotData = mutableListOf<NewnHotData>()
 
     //광고 뷰페이저
     private lateinit var ad_vp: ViewPager2
     private lateinit var adVP: AdVP
-    private val adData = mutableListOf<Uri>()
+    private var adData = mutableListOf<Uri>()
 
     //화해쇼핑
     private lateinit var shopping_recyclerview: RecyclerView
     private lateinit var shoppingAdapter: ShoppingAdapter
-    private val shoppingData = mutableListOf<ShoppingData>()
+    private var shoppingData = mutableListOf<ShoppingData>()
 
     //신상 sale 특가
     private lateinit var newProduct_recyclerview: RecyclerView
     private lateinit var newProductAdapter: NewProductAdapter
-    private val newProductData = mutableListOf<NewProductData>()
+    private var newProductData = mutableListOf<NewProductData>()
 
     //뷰티ON
     private lateinit var beautyOn_recyclerview: RecyclerView
     private lateinit var beautyOnAdapter: BeautyOnAdapter
-    private val beautyOnData = mutableListOf<BeautyOnData>()
+    private var beautyOnData = mutableListOf<BeautyOnData>()
 
+    override fun onResume() {
+        super.onResume()
+        // initShopping()
+    }
 
 
     override fun onCreateView(
@@ -66,6 +71,7 @@ class NowFragment : Fragment() {
     ): View? {
 
         mBinding = MainHomeNowPageBinding.inflate(inflater, container, false)
+
 
         //닉네임
         auth = FirebaseAuth.getInstance()
@@ -89,10 +95,26 @@ class NowFragment : Fragment() {
         //신상 sale 기획전
         newProduct_recyclerview = binding.newProductRecyclerview
         initNewProduct()
-        
+
         //뷰티ON
         beautyOn_recyclerview = binding.beautyONRecyclerview
         initBeautyON()
+
+        //상단이동 버튼 visibility
+        binding.nowScrollview.viewTreeObserver.addOnScrollChangedListener {
+            if (binding.nowScrollview.scrollY == 0) {
+                binding.scrollUpBtn.visibility = View.INVISIBLE
+            } else if (binding.nowScrollview.scrollY > 0) {
+                binding.scrollUpBtn.visibility = View.VISIBLE
+            }
+        }
+
+
+        //최상단화면으로 이동
+        binding.scrollUpBtn.setOnClickListener {
+            binding.nowScrollview.fullScroll(ScrollView.FOCUS_UP)
+            binding.scrollUpBtn.visibility = View.INVISIBLE
+        }
 
 
         return binding.root
@@ -118,6 +140,7 @@ class NowFragment : Fragment() {
 
     //이 제품 어때요? 리사이클러뷰 초기화
     private fun initRecommend() {
+        recommendData = mutableListOf()
         recommendAdapter = RecommendAdapter(requireContext())
         recommend_recyclerview.adapter = recommendAdapter
 
@@ -161,6 +184,7 @@ class NowFragment : Fragment() {
 
     //NEW인기신제품 리사이클러뷰 초기화
     private fun initNewnHot() {
+        newnhotData = mutableListOf()
         newnhotAdapter = NewnHotAdapter(requireContext())
         newnhot_recyclerview.adapter = newnhotAdapter
 
@@ -228,6 +252,7 @@ class NowFragment : Fragment() {
 
     //뷰페이저 이미지
     private fun getAdList(): MutableList<Uri> {
+        adData = mutableListOf()
         val adList = arrayListOf<String>("lifill", "celderma")
 
         for (i in 0..1) {
@@ -253,6 +278,7 @@ class NowFragment : Fragment() {
 
     //화해쇼핑
     private fun initShopping() {
+        shoppingData = mutableListOf()
         shoppingAdapter = ShoppingAdapter(requireContext())
         shopping_recyclerview.adapter = shoppingAdapter
 
@@ -318,10 +344,19 @@ class NowFragment : Fragment() {
 
     //신상 sale 기획전
     private fun initNewProduct() {
+        newProductData = mutableListOf()
         newProductAdapter = NewProductAdapter(requireContext())
         newProduct_recyclerview.adapter = newProductAdapter
 
-        val newProductList = arrayListOf<String>("birch_toneup_suncream","birch_soothing_gel","dokdo_cleansing_milk","dokdo_bubble_form","aqua_gel_mask","inteca_soothing_ample","makprem_cleansing_milk")
+        val newProductList = arrayListOf<String>(
+            "birch_toneup_suncream",
+            "birch_soothing_gel",
+            "dokdo_cleansing_milk",
+            "dokdo_bubble_form",
+            "aqua_gel_mask",
+            "inteca_soothing_ample",
+            "makprem_cleansing_milk"
+        )
 
         for (i in 0 until newProductList.size) {
             Firebase.storage.reference.child("product/" + newProductList[i] + ".png").downloadUrl.addOnCompleteListener {
@@ -376,11 +411,19 @@ class NowFragment : Fragment() {
     }
 
     //뷰티ON
-    private fun initBeautyON(){
+    private fun initBeautyON() {
+        beautyOnData = mutableListOf()
         beautyOnAdapter = BeautyOnAdapter(requireContext())
         beautyOn_recyclerview.adapter = beautyOnAdapter
 
-        val beautyOnList = arrayListOf<String>("hair_care","hair_problem","trouble","pery_pera","honey_sleep","spring_lip")
+        val beautyOnList = arrayListOf<String>(
+            "hair_care",
+            "hair_problem",
+            "trouble",
+            "pery_pera",
+            "honey_sleep",
+            "spring_lip"
+        )
 
         for (i in 0 until beautyOnList.size) {
             Firebase.storage.reference.child("beauty/" + beautyOnList[i] + ".png").downloadUrl.addOnCompleteListener {
