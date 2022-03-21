@@ -6,12 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".main.home.now.NowFragment">
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#EEEEEE"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <androidx.core.widget.NestedScrollView
         android:id="@+id/now_scrollview"
         android:layout_width="match_parent"

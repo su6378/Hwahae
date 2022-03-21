@@ -3,6 +3,7 @@ package com.birdview.hwahae.main.home.now
 import android.content.ContentValues.TAG
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,8 +12,12 @@ import android.view.ViewGroup
 import android.widget.ScrollView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
+import com.birdview.hwahae.R
 import com.birdview.hwahae.databinding.MainHomeNowPageBinding
 import com.birdview.hwahae.main.home.*
+import com.forms.sti.progresslitieigb.ProgressLoadingIGB
+import com.forms.sti.progresslitieigb.ProgressLoadingJIGB
+import com.forms.sti.progresslitieigb.finishLoadingIGB
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
@@ -61,7 +66,7 @@ class NowFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        // initShopping()
+        initBeautyON()
     }
 
 
@@ -72,6 +77,12 @@ class NowFragment : Fragment() {
 
         mBinding = MainHomeNowPageBinding.inflate(inflater, container, false)
 
+        ProgressLoadingIGB.startLoadingIGB(requireContext()){
+            message = " "
+            srcLottieJson = R.raw.skin_care
+            hight = 500 // Optional
+            width = 500 // Optional
+        }
 
         //닉네임
         auth = FirebaseAuth.getInstance()
@@ -98,7 +109,6 @@ class NowFragment : Fragment() {
 
         //뷰티ON
         beautyOn_recyclerview = binding.beautyONRecyclerview
-        initBeautyON()
 
         //상단이동 버튼 visibility
         binding.nowScrollview.viewTreeObserver.addOnScrollChangedListener {
@@ -119,6 +129,8 @@ class NowFragment : Fragment() {
 
         return binding.root
     }
+
+
 
     //닉네임
     private fun initNickname() {
@@ -448,6 +460,8 @@ class NowFragment : Fragment() {
                                     beautyOnAdapter.datas = beautyOnData
                                     beautyOnAdapter.notifyDataSetChanged()
 
+                                    //로티화면 종료
+                                    requireContext().finishLoadingIGB()
                                 }
 
                             } else {

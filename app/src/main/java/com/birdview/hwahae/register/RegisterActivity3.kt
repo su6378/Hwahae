@@ -35,6 +35,7 @@ class RegisterActivity3 : AppCompatActivity() {
     private lateinit var skinAcne: CheckBox
     private lateinit var skinSensibility: CheckBox
 
+
     //파이어베이스
     private lateinit var auth: FirebaseAuth
     private val db = Firebase.firestore

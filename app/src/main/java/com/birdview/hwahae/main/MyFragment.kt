@@ -1,60 +1,100 @@
 package com.birdview.hwahae.main
 
+import android.content.ContentValues
+import android.graphics.Color
 import android.os.Bundle
+import android.text.SpannableStringBuilder
+import android.text.Spanned
+import android.text.style.ForegroundColorSpan
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import com.birdview.hwahae.R
+import com.birdview.hwahae.databinding.MainMyPageBinding
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [MyFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class MyFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    //뷰바인딩
+    private var mBinding: MainMyPageBinding? = null
+    private val binding get() = mBinding!!
+
+    //Firebase
+    val db = FirebaseFirestore.getInstance()
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.main_my_page, container, false)
+
+        mBinding = MainMyPageBinding.inflate(inflater,container,false)
+
+        //닉네임
+        auth = FirebaseAuth.getInstance()
+        initNickname()
+
+        //회원 정보
+        initInfo()
+
+
+        //나를 소식 받기한 사용자 부분 글자색 변경
+        val peopleData = binding.userPeople.text.toString()
+
+        val builder = SpannableStringBuilder(peopleData)
+
+        val colorSpan = ForegroundColorSpan(ContextCompat.getColor(requireContext(),R.color.splash_background))
+        builder.setSpan(colorSpan, 13,14, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+
+        binding.userPeople.text = builder
+
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment MyFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            MyFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    //닉네임
+    private fun initNickname() {
+        val user = auth.currentUser
+        val email = user?.email
+        val docRef = db.collection("user").document(email!!)
+        docRef.get()
+            .addOnSuccessListener { document ->
+                if (document != null) {
+                    val nickname = document.getString("nickname")
+                    binding.nickname.text = nickname
+                } else {
                 }
             }
+            .addOnFailureListener { exception ->
+                Log.d(ContentValues.TAG, "유저 정보 불러오기 실패")
+            }
     }
+
+    //회원정보
+    private fun initInfo(){
+        val user = auth.currentUser
+        val email = user?.email
+        val docRef = db.collection("user").document(email!!)
+        docRef.get()
+            .addOnSuccessListener { document ->
+                if (document != null) {
+                    val birth = document.getString("birth")
+                    val birthInt = birth?.toInt()
+                    val age = (2023- birthInt!!).toString()
+
+                    val skin = document.getString("skin")
+                    val problem = document.get("problem").toString().trim().replace(",","/").replace("[","").replace("]","").replace(" ","")
+                    binding.userInfo.text = age+"/"+skin+"/"+problem
+                } else {
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.d(ContentValues.TAG, "유저 정보 불러오기 실패")
+            }
+    }
+
 }

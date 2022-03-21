@@ -12,6 +12,8 @@ import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.birdview.hwahae.R
 import com.birdview.hwahae.main.home.HomeFragment
+import com.forms.sti.progresslitieigb.ProgressLoadingIGB
+import com.forms.sti.progresslitieigb.finishLoadingIGB
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
@@ -26,6 +28,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_page)
+
+
 
 
         //바텀 네비게이션
@@ -53,6 +57,7 @@ class MainActivity : AppCompatActivity() {
 
         //시작 프래그먼트
         bottomNavi.selectedItemId = R.id.fragHome
+
 
 
     }
