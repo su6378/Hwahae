@@ -90,6 +90,7 @@ class RegisterActivity2 : AppCompatActivity() {
                 binding.maleBtn.setBackgroundColor(resources.getColor(R.color.white))
                 binding.maleImg.imageTintList = ColorStateList.valueOf(Color.parseColor("#696969"))
                 isMale = false
+                changeColor()
             }
         }
 
@@ -104,6 +105,7 @@ class RegisterActivity2 : AppCompatActivity() {
                 binding.femaleImg.imageTintList =
                     ColorStateList.valueOf(Color.parseColor("#696969"))
                 isFemale = false
+                changeColor()
             }
         }
 

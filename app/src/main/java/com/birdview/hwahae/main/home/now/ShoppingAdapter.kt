@@ -24,7 +24,7 @@ class ShoppingAdapter(private val context: Context) :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(context).inflate(R.layout.main_home_now_shopping_item, parent, false)
+        val view = LayoutInflater.from(context).inflate(R.layout.home_now_shopping_item, parent, false)
         return ViewHolder(view)
     }
 

@@ -67,6 +67,7 @@ dependencies {
     implementation 'com.github.LordSaac:ProgressLottieIGB:v1.0.2'
     implementation 'com.airbnb.android:lottie:5.0.2'
     implementation 'com.mikhaellopez:circularimageview:4.3.0'
+    implementation 'com.github.Turaiiao:CoolToast:0.0.2'
 
 
 }

@@ -1,5 +1,6 @@
 package com.birdview.hwahae.login
 
+import android.app.Activity
 import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
@@ -8,6 +9,8 @@ import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.app.ActivityCompat.finishAffinity
 import androidx.viewpager2.widget.ViewPager2
 import com.birdview.hwahae.R
 import com.birdview.hwahae.main.MainActivity
@@ -34,6 +37,10 @@ class LoginActivity : AppCompatActivity() {
     private var googleSignInClient : GoogleSignInClient? = null
 
     private val GOOGLE_LOGIN_CODE = 9001
+
+    override fun onBackPressed() {
+        finishAffinity()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

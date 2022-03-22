@@ -13,7 +13,6 @@ import com.birdview.hwahae.R
 import com.birdview.hwahae.main.home.now.NowFragment
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import me.codego.view.RoundLayout
 
 
 class HomeFragment : Fragment() {
@@ -30,7 +29,7 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view: View = inflater.inflate(R.layout.main_home_page, container, false)
+        val view: View = inflater.inflate(R.layout.home_page, container, false)
         viewPager = view.findViewById(R.id.pager)
         tabLayout = view.findViewById(R.id.tab_layout)
 

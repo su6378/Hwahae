@@ -262,6 +262,7 @@ class RegisterActivity3 : AppCompatActivity() {
             "nickname" to nickname,
             "gender" to gender,
             "birth" to birth,
+            "skin" to skin,
             "problem" to problem
         )
 

@@ -22,7 +22,7 @@ class AdVP (private val context: Context, adList: MutableList<Uri>) : RecyclerVi
     }
 
     inner class PagerViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder
-        (LayoutInflater.from(parent.context).inflate(R.layout.main_home_now_ad_item, parent, false)){
+        (LayoutInflater.from(parent.context).inflate(R.layout.home_now_ad_item, parent, false)){
 
         val ad_image = itemView.findViewById<ImageView>(R.id.ad_image)
     }

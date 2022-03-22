@@ -1,7 +1,7 @@
-package com.birdview.hwahae.main
+package com.birdview.hwahae.main.my
 
 import android.content.ContentValues
-import android.graphics.Color
+import android.content.Intent
 import android.os.Bundle
 import android.text.SpannableStringBuilder
 import android.text.Spanned
@@ -13,7 +13,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import com.birdview.hwahae.R
-import com.birdview.hwahae.databinding.MainMyPageBinding
+import com.birdview.hwahae.databinding.MyPageBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -21,7 +21,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 class MyFragment : Fragment() {
 
     //뷰바인딩
-    private var mBinding: MainMyPageBinding? = null
+    private var mBinding: MyPageBinding? = null
     private val binding get() = mBinding!!
 
     //Firebase
@@ -33,7 +33,7 @@ class MyFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        mBinding = MainMyPageBinding.inflate(inflater,container,false)
+        mBinding = MyPageBinding.inflate(inflater,container,false)
 
         //닉네임
         auth = FirebaseAuth.getInstance()
@@ -41,7 +41,6 @@ class MyFragment : Fragment() {
 
         //회원 정보
         initInfo()
-
 
         //나를 소식 받기한 사용자 부분 글자색 변경
         val peopleData = binding.userPeople.text.toString()
@@ -52,6 +51,13 @@ class MyFragment : Fragment() {
         builder.setSpan(colorSpan, 13,14, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
 
         binding.userPeople.text = builder
+
+        //설정 페이지로 이동
+        binding.setting.setOnClickListener{
+            val intent = Intent(requireContext(),SettingActivity::class.java)
+            startActivity(intent)
+            requireActivity().overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left)
+        }
 
         return binding.root
     }

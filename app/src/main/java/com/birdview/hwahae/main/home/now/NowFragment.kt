@@ -13,7 +13,7 @@ import android.widget.ScrollView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.birdview.hwahae.R
-import com.birdview.hwahae.databinding.MainHomeNowPageBinding
+import com.birdview.hwahae.databinding.HomeNowPageBinding
 import com.birdview.hwahae.main.home.*
 import com.forms.sti.progresslitieigb.ProgressLoadingIGB
 import com.forms.sti.progresslitieigb.ProgressLoadingJIGB
@@ -31,7 +31,7 @@ class NowFragment : Fragment() {
     private lateinit var auth: FirebaseAuth
 
     //뷰바인딩
-    private var mBinding: MainHomeNowPageBinding? = null
+    private var mBinding: HomeNowPageBinding? = null
     private val binding get() = mBinding!!
 
     //이 제품 어때요?
@@ -66,7 +66,6 @@ class NowFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        initBeautyON()
     }
 
 
@@ -75,19 +74,11 @@ class NowFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        mBinding = MainHomeNowPageBinding.inflate(inflater, container, false)
-
-        ProgressLoadingIGB.startLoadingIGB(requireContext()){
-            message = " "
-            srcLottieJson = R.raw.skin_care
-            hight = 500 // Optional
-            width = 500 // Optional
-        }
+        mBinding = HomeNowPageBinding.inflate(inflater, container, false)
 
         //닉네임
         auth = FirebaseAuth.getInstance()
         initNickname()
-
         //이 제품 어때요?
         recommend_recyclerview = binding.recommendRecyclerview
         initRecommend()
@@ -109,6 +100,7 @@ class NowFragment : Fragment() {
 
         //뷰티ON
         beautyOn_recyclerview = binding.beautyONRecyclerview
+        initBeautyON()
 
         //상단이동 버튼 visibility
         binding.nowScrollview.viewTreeObserver.addOnScrollChangedListener {
@@ -134,6 +126,12 @@ class NowFragment : Fragment() {
 
     //닉네임
     private fun initNickname() {
+        ProgressLoadingIGB.startLoadingIGB(requireContext()){
+            message = " "
+            srcLottieJson = R.raw.skin_care
+            hight = 500 // Optional
+            width = 500 // Optional
+        }
         val user = auth.currentUser
         val email = user?.email
         val docRef = db.collection("user").document(email!!)
@@ -233,6 +231,7 @@ class NowFragment : Fragment() {
 
                         newnhotAdapter.datas = newnhotData
                         newnhotAdapter.notifyDataSetChanged()
+
 
 
                     }
@@ -349,6 +348,7 @@ class NowFragment : Fragment() {
         shoppingAdapter.setOnItemClickListener(object : ShoppingAdapter.OnItemClickListener {
             override fun onItemClick(v: View, data: ShoppingData, pos: Int) {
                 Log.d("테스트", data.title)
+
             }
 
         })
@@ -459,9 +459,10 @@ class NowFragment : Fragment() {
 
                                     beautyOnAdapter.datas = beautyOnData
                                     beautyOnAdapter.notifyDataSetChanged()
-
                                     //로티화면 종료
                                     requireContext().finishLoadingIGB()
+
+
                                 }
 
                             } else {

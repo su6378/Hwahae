@@ -35,7 +35,7 @@ class BeautyFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.main_home_beauty_page, container, false)
+        return inflater.inflate(R.layout.home_beauty_page, container, false)
     }
 
     companion object {
