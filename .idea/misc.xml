@@ -11,25 +11,19 @@
         <entry key="..\:/josooyun/Android/Hwahae/app/src/main/res/drawable/bottom_home_icon.xml" value="0.2315" />
         <entry key="..\:/josooyun/Android/Hwahae/app/src/main/res/drawable/skintype_radio.xml" value="0.246" />
         <entry key="..\:/josooyun/Android/Hwahae/app/src/main/res/layout/activity_main.xml" value="0.36614583333333334" />
-        <entry key="..\:/josooyun/Android/Hwahae/app/src/main/res/layout/home_now_page.xml" value="0.22" />
-        <entry key="..\:/josooyun/Android/Hwahae/app/src/main/res/layout/home_page.xml" value="0.3614583333333333" />
         <entry key="..\:/josooyun/Android/Hwahae/app/src/main/res/layout/login_find_page.xml" value="0.36614583333333334" />
         <entry key="..\:/josooyun/Android/Hwahae/app/src/main/res/layout/login_image_item.xml" value="0.1890625" />
         <entry key="..\:/josooyun/Android/Hwahae/app/src/main/res/layout/login_page.xml" value="0.1890625" />
-        <entry key="..\:/josooyun/Android/Hwahae/app/src/main/res/layout/login_page2.xml" value="0.22" />
+        <entry key="..\:/josooyun/Android/Hwahae/app/src/main/res/layout/login_page2.xml" value="0.1890625" />
         <entry key="..\:/josooyun/Android/Hwahae/app/src/main/res/layout/main_home_event_page.xml" value="0.20833333333333334" />
         <entry key="..\:/josooyun/Android/Hwahae/app/src/main/res/layout/main_home_now_ad_item.xml" value="0.1890625" />
-        <entry key="..\:/josooyun/Android/Hwahae/app/src/main/res/layout/main_home_now_beautyon_item.xml" value="0.36614583333333334" />
-        <entry key="..\:/josooyun/Android/Hwahae/app/src/main/res/layout/main_home_now_newproduct_item.xml" value="0.36614583333333334" />
-        <entry key="..\:/josooyun/Android/Hwahae/app/src/main/res/layout/main_home_now_page.xml" value="0.15572715572715573" />
+        <entry key="..\:/josooyun/Android/Hwahae/app/src/main/res/layout/main_home_now_page.xml" value="0.25" />
         <entry key="..\:/josooyun/Android/Hwahae/app/src/main/res/layout/main_home_now_shopping_item.xml" value="0.36614583333333334" />
         <entry key="..\:/josooyun/Android/Hwahae/app/src/main/res/layout/main_home_page.xml" value="0.25" />
         <entry key="..\:/josooyun/Android/Hwahae/app/src/main/res/layout/main_my_page.xml" value="0.36614583333333334" />
         <entry key="..\:/josooyun/Android/Hwahae/app/src/main/res/layout/main_observe_page.xml" value="0.36614583333333334" />
         <entry key="..\:/josooyun/Android/Hwahae/app/src/main/res/layout/main_page.xml" value="0.36614583333333334" />
         <entry key="..\:/josooyun/Android/Hwahae/app/src/main/res/layout/main_shop_page.xml" value="0.36614583333333334" />
-        <entry key="..\:/josooyun/Android/Hwahae/app/src/main/res/layout/my_page.xml" value="0.24791666666666667" />
-        <entry key="..\:/josooyun/Android/Hwahae/app/src/main/res/layout/my_setting_page.xml" value="0.3614583333333333" />
         <entry key="..\:/josooyun/Android/Hwahae/app/src/main/res/layout/newnhot_item.xml" value="0.67" />
         <entry key="..\:/josooyun/Android/Hwahae/app/src/main/res/layout/recommend_item.xml" value="0.36614583333333334" />
         <entry key="..\:/josooyun/Android/Hwahae/app/src/main/res/layout/register_page.xml" value="0.1875" />
@@ -61,10 +55,20 @@
         <entry key="..\:/josooyun/AndroidProject/HwaHae/app/src/main/res/layout/register_route.xml" value="0.36614583333333334" />
         <entry key="..\:/josooyun/AndroidProject/HwaHae/app/src/main/res/layout/splash_page.xml" value="0.1" />
         <entry key="..\:/josooyun/AndroidProject/HwaHae/app/src/main/res/layout/splash_page2.xml" value="0.25833333333333336" />
+        <entry key="..\:/josooyun/AndroidProject/Hwahae/app/src/main/res/layout/home_now_page.xml" value="0.2269021739130435" />
+        <entry key="..\:/josooyun/AndroidProject/Hwahae/app/src/main/res/layout/home_page.xml" value="0.2269021739130435" />
+        <entry key="..\:/josooyun/AndroidProject/Hwahae/app/src/main/res/layout/main_home_now_newproduct_item.xml" value="0.2269021739130435" />
+        <entry key="..\:/josooyun/AndroidProject/Hwahae/app/src/main/res/layout/main_home_now_page.xml" value="0.13631284916201117" />
+        <entry key="..\:/josooyun/AndroidProject/Hwahae/app/src/main/res/layout/main_home_now_shopping_item.xml" value="0.23143115942028986" />
+        <entry key="..\:/josooyun/AndroidProject/Hwahae/app/src/main/res/layout/main_home_now_thisweek_item.xml" value="0.23143115942028986" />
+        <entry key="..\:/josooyun/AndroidProject/Hwahae/app/src/main/res/layout/main_page.xml" value="0.2269021739130435" />
+        <entry key="..\:/josooyun/AndroidProject/Hwahae/app/src/main/res/layout/my_setting_page.xml" value="0.1296875" />
+        <entry key="..\:/josooyun/AndroidProject/Hwahae/app/src/main/res/layout/search_page.xml" value="0.2269021739130435" />
+        <entry key="..\:/josooyun/AndroidProject/Hwahae/app/src/main/res/layout/search_ranking_item.xml" value="0.1296875" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

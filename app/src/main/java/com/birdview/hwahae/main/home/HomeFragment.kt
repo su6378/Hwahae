@@ -1,5 +1,6 @@
 package com.birdview.hwahae.main.home
 
+import android.content.Intent
 import android.graphics.Typeface
 import android.os.Bundle
 import android.util.Log
@@ -11,13 +12,22 @@ import android.widget.TextView
 import androidx.core.view.forEachIndexed
 import androidx.viewpager2.widget.ViewPager2
 import com.birdview.hwahae.R
+import com.birdview.hwahae.databinding.HomePageBinding
+import com.birdview.hwahae.databinding.MyPageBinding
 import com.birdview.hwahae.main.MainActivity
 import com.birdview.hwahae.main.home.now.NowFragment
+import com.birdview.hwahae.main.my.SettingActivity
+import com.birdview.hwahae.main.search.SearchActivity
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
 
 class HomeFragment : Fragment(){
+
+    //뷰바인딩
+    private var mBinding: HomePageBinding? = null
+    private val binding get() = mBinding!!
+
     private lateinit var viewPager: ViewPager2
     private lateinit var tabLayout: TabLayout
     val tabTextList = arrayListOf("NOW", "뷰티ON","이벤트","어워드","쇼핑트렌드")
@@ -27,11 +37,20 @@ class HomeFragment : Fragment(){
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view: View = inflater.inflate(R.layout.home_page, container, false)
-        viewPager = view.findViewById(R.id.pager)
-        tabLayout = view.findViewById(R.id.tab_layout)
 
-        return view
+        mBinding = HomePageBinding.inflate(inflater,container,false)
+
+        viewPager = binding.pager
+        tabLayout = binding.tabLayout
+
+        //검색창
+        binding.searchBar.setOnClickListener{
+            val intent = Intent(requireContext(), SearchActivity::class.java)
+            startActivity(intent)
+            requireActivity().overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left)
+        }
+
+        return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -61,6 +80,8 @@ class HomeFragment : Fragment(){
         TabLayoutMediator(tabLayout, viewPager){ tab, position ->
             tab.text = tabTextList[position]
         }.attach()
+
+
     }
 
     private val tabLayoutOnPageChangeListener = object : TabLayout.OnTabSelectedListener {

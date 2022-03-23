@@ -21,6 +21,7 @@ import com.marcoscg.dialogsheet.DialogSheet
 
 class SettingActivity : AppCompatActivity() {
 
+    //뷰바인딩
     private var mBinding: MySettingPageBinding? = null
     private val binding get() = mBinding!!
 
