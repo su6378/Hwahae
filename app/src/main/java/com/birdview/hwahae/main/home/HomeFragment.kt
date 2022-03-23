@@ -2,6 +2,7 @@ package com.birdview.hwahae.main.home
 
 import android.graphics.Typeface
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,20 +11,17 @@ import android.widget.TextView
 import androidx.core.view.forEachIndexed
 import androidx.viewpager2.widget.ViewPager2
 import com.birdview.hwahae.R
+import com.birdview.hwahae.main.MainActivity
 import com.birdview.hwahae.main.home.now.NowFragment
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(){
     private lateinit var viewPager: ViewPager2
     private lateinit var tabLayout: TabLayout
     val tabTextList = arrayListOf("NOW", "뷰티ON","이벤트","어워드","쇼핑트렌드")
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -94,4 +92,6 @@ class HomeFragment : Fragment() {
     private fun TextView.setTextBold(isBold: Boolean) {
         this.setTypeface(null, if(isBold) Typeface.BOLD else Typeface.NORMAL)
     }
+
+
 }

@@ -51,7 +51,8 @@
         <activity
             android:name=".main.MainActivity"
             android:exported="true"
-            android:theme="@style/MainTheme" />
+            android:theme="@style/MainTheme"
+            android:windowSoftInputMode="adjustNothing"/>
         <activity
             android:name=".splash.SplashActivity"
             android:exported="true"
